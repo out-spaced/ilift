@@ -1,3 +1,4 @@
+import { RefObject } from "react";
 import { createPortal } from "react-dom";
 import { styled } from "styled-components";
 
@@ -16,12 +17,17 @@ const Input = styled.input`
 
 const Button = styled.button``;
 
-export default function AddModal({ containerRef }) {
+type Props = {
+  containerRef: RefObject<HTMLDivElement>;
+};
+
+export default function AddModal({ containerRef }: Props) {
+  if (!containerRef.current) throw new Error("No ref assigned for modal");
   return createPortal(
     <Modal>
       <Input type="text" />
       <Button>Add</Button>
     </Modal>,
-    containerRef
+    containerRef.current
   );
 }

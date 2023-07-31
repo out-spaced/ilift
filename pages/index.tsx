@@ -32,7 +32,7 @@ const AddButtonContainer = styled.div`
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
-  const addButtonRef = useRef(null);
+  const addButtonRef = useRef<HTMLDivElement>(null);
 
   let currentSet = 2;
   let previousCompleted = 225;
@@ -61,7 +61,7 @@ export default function App() {
     <Container>
       <AddButtonContainer ref={addButtonRef}>
         <AddButton onClick={() => setModalOpen((prev) => !prev)}>add</AddButton>
-        {modalOpen && <AddModal containerRef={addButtonRef.current} />}
+        {modalOpen && <AddModal containerRef={addButtonRef} />}
       </AddButtonContainer>
       <Lift>
         <Info>
