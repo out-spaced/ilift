@@ -1,10 +1,16 @@
+import { styled } from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+`;
+
 export default function WeightInput() {
   return (
     <>
-      <div>current weight</div>
-      <div>
+      <Container>
+        <div>current weight</div>
         <input type="number" />
-      </div>
+      </Container>
     </>
   );
 }

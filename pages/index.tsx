@@ -17,13 +17,15 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Input = styled.div`
+const CurrentInput = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const AddButton = styled.button`
-  //position: relative;
+const Output = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
+const AddButton = styled.button``;
 const AddButtonContainer = styled.div`
   position: relative;
 `;
@@ -64,20 +66,23 @@ export default function App() {
       <Lift>
         <Info>
           <div>squat</div>
-          <Stat>current set: {currentSet}</Stat>
-          <Stat>previous: {previousCompleted}</Stat>
           <div>
             <button>see history</button>
           </div>
+          <Stat>previous: {previousCompleted}</Stat>
         </Info>
-        <Input>
+        <CurrentInput>
           <WeightInput />
-          <Timer>{timeElapsed}</Timer>
           <RepsFailedInput />
+        </CurrentInput>
+        <Output>
+          <Stat>current set: {currentSet}</Stat>
+          <Timer>{timeElapsed}</Timer>
+          <div>Total failed reps: {failedReps}</div>
           <div>
             <button onClick={completedSet}>completed set</button>
           </div>
-        </Input>
+        </Output>
       </Lift>
     </Container>
   );

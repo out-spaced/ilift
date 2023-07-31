@@ -1,10 +1,15 @@
+import { styled } from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+`;
 export default function RepsFailedInput() {
   return (
     <>
-      <div>reps failed</div>
-      <div>
+      <Container>
+        <div>reps failed</div>
         <input type="number" />
-      </div>
+      </Container>
     </>
   );
 }
