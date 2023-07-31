@@ -1,19 +1,43 @@
+import { useState, useRef } from "react";
 import { styled } from "styled-components";
+import AddModal from "../components/AddModal";
+import WeightInput from "../components/WeightInput";
+import RepsFailedInput from "../components/RepsFailedInput";
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 400px;
   height: 800px;
 `;
 const Lift = styled.div``;
 const Stat = styled.div``;
 const Timer = styled.div``;
-const Info = styled.div``;
-const Input = styled.div``;
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const Input = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const AddButton = styled.button`
+  //position: relative;
+`;
+const AddButtonContainer = styled.div`
+  position: relative;
+  border: 1px solid red;
+`;
 
 export default function App() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const addButtonRef = useRef(null);
+
   let currentSet = 2;
   let previousCompleted = 225;
   let failedReps = 1;
+  let timeElapsed = "1:00";
+
   const failRep = () => {
     // do something
   };
@@ -27,33 +51,34 @@ export default function App() {
     // do something
     if (currentSet === 5) {
       completedExcercise();
+    } else {
+      startTimer();
     }
   };
+
   return (
     <Container>
-      <button>add</button>
+      <AddButtonContainer ref={addButtonRef}>
+        <AddButton onClick={() => setModalOpen((prev) => !prev)}>add</AddButton>
+        {modalOpen && <AddModal containerRef={addButtonRef.current} />}
+      </AddButtonContainer>
       <Lift>
         <Info>
           <span>squat</span>
           <Stat>current set: {currentSet}</Stat>
           <Stat>previous: {previousCompleted}</Stat>
-          <button>see history</button>
+          <div>
+            <button>see history</button>
+          </div>
         </Info>
         <Input>
-          <div>current weight</div>
-          <input type="text" />
-          <button onClick={startTimer}>start timer</button>
-          <Timer>1:00</Timer>
-          <div>reps failed</div>
-          <input type="text" />
-          <button onClick={completedSet}>completed set</button>
+          <WeightInput />
+          <Timer>{timeElapsed}</Timer>
+          <RepsFailedInput />
+          <div>
+            <button onClick={completedSet}>completed set</button>
+          </div>
         </Input>
-      </Lift>
-      <Lift>
-        bench
-        <select>
-          <option>200</option>
-        </select>
       </Lift>
     </Container>
   );
