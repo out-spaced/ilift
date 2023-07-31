@@ -11,7 +11,6 @@ const Modal = styled.div`
 `;
 
 const Input = styled.input`
- 
   border 2px solid black
 `;
 

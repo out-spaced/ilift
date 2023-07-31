@@ -26,7 +26,6 @@ const AddButton = styled.button`
 `;
 const AddButtonContainer = styled.div`
   position: relative;
-  border: 1px solid red;
 `;
 
 export default function App() {
@@ -64,7 +63,7 @@ export default function App() {
       </AddButtonContainer>
       <Lift>
         <Info>
-          <span>squat</span>
+          <div>squat</div>
           <Stat>current set: {currentSet}</Stat>
           <Stat>previous: {previousCompleted}</Stat>
           <div>
