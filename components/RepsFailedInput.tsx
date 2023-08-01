@@ -3,13 +3,12 @@ import { styled } from "styled-components";
 const Container = styled.div`
   display: flex;
 `;
+
 export default function RepsFailedInput() {
   return (
-    <>
-      <Container>
-        <div>reps failed</div>
-        <input type="number" />
-      </Container>
-    </>
+    <Container>
+      <div>reps failed</div>
+      <input type="number" />
+    </Container>
   );
 }

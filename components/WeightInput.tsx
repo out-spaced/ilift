@@ -6,11 +6,9 @@ const Container = styled.div`
 
 export default function WeightInput() {
   return (
-    <>
-      <Container>
-        <div>current weight</div>
-        <input type="number" />
-      </Container>
-    </>
+    <Container>
+      <div>current weight</div>
+      <input type="number" />
+    </Container>
   );
 }
